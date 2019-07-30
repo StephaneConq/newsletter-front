@@ -11,29 +11,29 @@ import {first} from 'rxjs/operators';
 })
 export class PanelHomeComponent implements OnInit {
   currentUser: User;
-  users = [];
+  // users = [];
 
   constructor(
     private authentificationService: AuthentificationService,
-    private userService: UserService
+    // private userService: UserService
   ) {
     this.currentUser = this.authentificationService.currentUserValue;
   }
 
   ngOnInit() {
-    this.loadAllUsers();
+    //this.loadAllUsers();
   }
 
-  deleteUser(id: number) {
-    this.userService.delete(id)
-      .pipe(first())
-      .subscribe(() => this.loadAllUsers());
-  }
-
-  private loadAllUsers() {
-    this.userService.getAll()
-      .pipe(first())
-      .subscribe(users => this.users = users);
-  }
+  // deleteUser(id: number) {
+  //   this.userService.delete(id)
+  //     .pipe(first())
+  //     .subscribe(() => this.loadAllUsers());
+  // }
+  //
+  // private loadAllUsers() {
+  //   this.userService.getAll()
+  //     .pipe(first())
+  //     .subscribe(users => this.users = users);
+  // }
 
 }

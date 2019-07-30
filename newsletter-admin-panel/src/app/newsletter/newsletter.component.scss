@@ -1,0 +1,28 @@
+.container {
+  max-width: 700px;
+  ::ng-deep.mat-card-header-text {
+    margin: auto;
+  }
+  .title {
+    font-size: 3.5em;
+  }
+  .categories {
+    h2{
+      text-align: center;
+    }
+    .stories {
+      padding : 1%;
+    }
+    .section-article {
+      .checkbox {
+        margin: 0 10px;
+      }
+    }
+    .categories-title {
+      margin: 10px;
+    }
+  }
+  .form-button {
+    text-align: center;
+  }
+}
