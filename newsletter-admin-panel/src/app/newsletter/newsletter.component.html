@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="margin-container">
+    <form [formGroup]="newsletterForm" name="newsletter" id="newsletter" (ngSubmit)="onSubmit()">
+      <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title class="title">Newsletter</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="categories">
+            <h2 class="categories-title">SPORTS</h2>
+            <div formArrayName="sport" *ngFor="let story of this.sportsArray; let i = index" class="stories">
+              <mat-card>
+              <section class="section-article" [formGroupName]="i">
+                <mat-checkbox class="checkbox" checked="{{ story.checked }}">
+                  <div class="story">
+                    <h3 class="story-title">
+                      {{ story.title }}
+                    </h3>
+                    <div class="story-text">
+                      {{ story.text }}
+                    </div>
+                  </div>
+                </mat-checkbox>
+              </section>
+              </mat-card>
+            </div>
+          </div>
+          <div class="categories">
+            <h2 class="categories-title">ENTERTAINMENT</h2>
+            <div formArrayName="sport" *ngFor="let story of this.entertainmentArray; let i = index" class="stories">
+              <mat-card>
+                <section class="section-article" [formGroupName]="i">
+                  <mat-checkbox class="checkbox" checked="{{ story.checked }}">
+                    <div class="story">
+                      <h3 class="story-title">
+                        {{ story.title }}
+                      </h3>
+                      <div class="story-text">
+                        {{ story.text }}
+                      </div>
+                    </div>
+                  </mat-checkbox>
+                </section>
+              </mat-card>
+            </div>
+          </div>
+          <div class="categories">
+            <h2 class="categories-title">LIFESTYLE/EXTRA</h2>
+            <div formArrayName="sport" *ngFor="let story of this.lifestyleArray; let i = index" class="stories">
+              <mat-card>
+                <section class="section-article" [formGroupName]="i">
+                  <mat-checkbox class="checkbox" checked="{{ story.checked }}">
+                    <div class="story">
+                      <h3 class="story-title">
+                        {{ story.title }}
+                      </h3>
+                      <div class="story-text">
+                        {{ story.text }}
+                      </div>
+                    </div>
+                  </mat-checkbox>
+                </section>
+              </mat-card>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="form-button">
+            <button mat-raised-button>
+              Submit
+            </button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>
