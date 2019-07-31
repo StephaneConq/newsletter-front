@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import {User} from '../models/user';
+import {environment} from '../../environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {Story} from '../models/story';
 
 @Injectable({
   providedIn: 'root'
@@ -96,52 +100,55 @@ export class NewsletterApiService {
     }
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
   getStories() {
     return this.stories;
   }
-  public getSportStories() {
-    const array = [];
-    this.stories.map(story => story.category === 'SPORTS' ? array.push(story) : console.log());
-    array.sort(function(a, b) {
-      const dateA = new Date(a.date);
-      const dateB = new Date(b.date);
-      return dateB.getTime() - dateA.getTime();
-    });
-    let i;
-    for (i = 0; i < 3; i++) {
-      array[i].checked = 'true';
-    }
-    return array;
+  public getStoriesByCategory(category: string) {
+    // const array = [];
+    // this.stories.map(story => story.category === 'SPORTS' ? array.push(story) : console.log());
+    // array.sort(function(a, b) {
+    //   const dateA = new Date(a.date);
+    //   const dateB = new Date(b.date);
+    //   return dateB.getTime() - dateA.getTime();
+    // });
+    // let i;
+    // for (i = 0; i < 3; i++) {
+    //   array[i].checked = 'true';
+    // }
+    // return array;
+    return this.http.get<Story[]>(`${environment.apiUrl}/api/news/?category=${category}`);
   }
 
-  getEntertainmentStories() {
-    const array = [];
-    this.stories.map(story => story.category === 'ENTERTAINMENT' ? array.push(story) : console.log());
-    array.sort(function(a, b) {
-      const dateA = new Date(a.date);
-      const dateB = new Date(b.date);
-      return dateB.getTime() - dateA.getTime();
-    });
-    let i;
-    for (i = 0; i < 3; i++) {
-      array[i].checked = 'true';
-    }
-    return array;
-  }
-
-  getLifestyleExtraStories() {
-    const array = [];
-    this.stories.map(story => story.category === 'LIFESTYLE/EXTRA' ? array.push(story) : console.log());
-    array.sort(function(a, b) {
-      const dateA = new Date(a.date);
-      const dateB = new Date(b.date);
-      return dateB.getTime() - dateA.getTime();
-    });
-    let i;
-    for (i = 0; i < 3; i++) {
-      array[i].checked = 'true';
-    }
-    return array;
-  }
+  //
+  // getEntertainmentStories() {
+  //   const array = [];
+  //   this.stories.map(story => story.category === 'ENTERTAINMENT' ? array.push(story) : console.log());
+  //   array.sort(function(a, b) {
+  //     const dateA = new Date(a.date);
+  //     const dateB = new Date(b.date);
+  //     return dateB.getTime() - dateA.getTime();
+  //   });
+  //   let i;
+  //   for (i = 0; i < 3; i++) {
+  //     array[i].checked = 'true';
+  //   }
+  //   return array;
+  // }
+  //
+  // getLifestyleExtraStories() {
+  //   const array = [];
+  //   this.stories.map(story => story.category === 'LIFESTYLE/EXTRA' ? array.push(story) : console.log());
+  //   array.sort(function(a, b) {
+  //     const dateA = new Date(a.date);
+  //     const dateB = new Date(b.date);
+  //     return dateB.getTime() - dateA.getTime();
+  //   });
+  //   let i;
+  //   for (i = 0; i < 3; i++) {
+  //     array[i].checked = 'true';
+  //   }
+  //   return array;
+  // }
 }
