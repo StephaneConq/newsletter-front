@@ -1,27 +1,54 @@
+@import "./../variables.scss";
+
 .container {
   max-width: 700px;
-  ::ng-deep.mat-card-header-text {
-    margin: auto;
-  }
-  .title {
+
+  .title-page {
     font-size: 3.5em;
   }
   .categories {
-    h2{
+    .category-title {
       text-align: center;
     }
     .stories {
       margin: 2% 0;
       padding : 1%;
-    }
-    .section-article {
-      .checkbox {
-        margin: 0 10px;
+      .section-article {
+        .article{
+          display: flex;
+          .story-text {
+            width: 100%;
+            height: 100%;
+            white-space: initial;
+            margin: auto;
+          }
+          .img-story{
+            max-width: 200px;
+            max-height: 200px;
+            margin: auto;
+          }
+          @media only screen and (max-width: $mobile-width) {
+            .img-story {
+              width: auto;
+              max-height: 130px;
+              margin: 10px auto;
+            }
+          }
+        }
+        @media only screen and (max-width: $mobile-width) {
+          .article {
+            display: flex;
+            flex-direction: column
+          }
+        }
       }
     }
-    .categories-title {
-      margin: 10px;
+    .mat-card-subtitle-custom {
+      margin: 0;
     }
+  }
+  ::ng-deep.mat-card-header-text {
+    margin: auto;
   }
   .form-button {
     text-align: center;

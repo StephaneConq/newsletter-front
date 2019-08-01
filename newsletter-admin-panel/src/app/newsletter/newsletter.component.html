@@ -3,22 +3,26 @@
     <form *ngIf="newsletterForm" [formGroup]="newsletterForm" name="newsletter" id="newsletter" (ngSubmit)="onSubmit()">
       <mat-card class="card">
         <mat-card-header>
-          <mat-card-title class="title">Newsletter</mat-card-title>
+          <mat-card-title class="title-page">Newsletter</mat-card-title>
         </mat-card-header>
         <mat-card-content>
           <div class="categories">
-            <h2 class="categories-title">SPORTS</h2>
+            <h2 class="category-title">SPORTS</h2>
             <div formGroupName="sports">
-              <mat-card *ngFor="let story of this.storiesByCategory[categories[0]]; let i = index" class="stories" >
-              <section class="section-article" >
-                <mat-checkbox class="checkbox" [ngModel]="i<3" [formControlName]="i">
-                  <div class="story">
-                    <div class="story-text">
-                      {{ story.title }}
-                    </div>
-                  </div>
-                </mat-checkbox>
-              </section>
+              <mat-card *ngFor="let story of this.storiesByCategory[categories[0]]; let i = index" class="stories">
+                <mat-card-content>
+                  <section class="section-article">
+                    <mat-checkbox [ngModel]="i<3" [formControlName]="i">
+                      <div class="article">
+                        <mat-card-header class="story-text">
+                          <mat-card-title>{{ story.title }} </mat-card-title>
+                          <mat-card-subtitle class="mat-card-subtitle-custom">{{ story.name }} - {{ story.publication_date }}</mat-card-subtitle>
+                        </mat-card-header>
+                        <img mat-card-image src="{{ story.imgurl }}" alt="{{ story.title }}" class="img-story">
+                      </div>
+                    </mat-checkbox>
+                  </section>
+                </mat-card-content>
               </mat-card>
             </div>
           </div>
@@ -26,7 +30,7 @@
             <h2 class="categories-title">ENTERTAINMENT</h2>
             <div class="stories" formGroupName="entertainment">
               <mat-card *ngFor="let story of this.storiesByCategory[categories[1]]; let i = index">
-                <section class="section-article" >
+                <section class="section-article">
                   <mat-checkbox class="checkbox" [ngModel]="i<3" [formControlName]="i">
                     <div class="story">
                       <h3 class="story-title">
@@ -45,7 +49,7 @@
             <h2 class="categories-title">LIFESTYLE/EXTRA</h2>
             <div class="stories" formGroupName="lifestyle">
               <mat-card *ngFor="let story of this.storiesByCategory[categories[2]]; let i = index">
-                <section class="section-article" >
+                <section class="section-article">
                   <mat-checkbox class="checkbox" [ngModel]="i<3" [formControlName]="i">
                     <div class="story">
                       <h3 class="story-title">
