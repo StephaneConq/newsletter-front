@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthentificationService} from '../services/authentification.service';
 import {AlertService} from '../services/alert.service';
-import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -31,6 +30,16 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authentificationService.currentUserSubject.subscribe(user => {
+      if (user) {
+        this.router.navigate([this.returnUrl]);
+      }
+    },
+    error => {
+      this.alertService.error(error);
+      this.loading = false;
+    });
+
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -42,7 +51,8 @@ export class LoginComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
-  onSubmit() {
+  onFormSubmit(event) {
+    event.preventDefault();
     this.submitted = true;
 
     // reset alerts on submit
@@ -50,19 +60,14 @@ export class LoginComponent implements OnInit {
 
     // stop here if form is invalid
     if (this.loginForm.invalid) {
+      this.alertService.error('At least one field is empty');
       return;
     }
 
     this.loading = true;
-    this.authentificationService.login(this.f.username.value, this.f.password.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.router.navigate([this.returnUrl]);
-        },
-        error => {
-          this.alertService.error(error);
-          this.loading = false;
-        });
+    this.authentificationService.login(this.f.username.value, this.f.password.value).then((success) => {}, (error) => {
+      this.loading = false;
+      this.submitted = false;
+    });
   }
 }
