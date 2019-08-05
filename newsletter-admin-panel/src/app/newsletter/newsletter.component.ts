@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {NewsletterApiService} from '../services/newsletter-api.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AlertService} from '../services/alert.service';
-import {timeout} from "rxjs/operators";
-
 
 @Component({
   selector: 'app-newsletter',
@@ -13,8 +11,7 @@ import {timeout} from "rxjs/operators";
 export class NewsletterComponent implements OnInit {
   newsletterForm: FormGroup;
   storiesByCategory: object = {};
-  //TODO Change politics into sports
-  readonly categories = ['politics', 'entertainment', 'lifestyle'];
+  readonly categories = ['sports', 'entertainment', 'lifestyle'];
   readonly nbSendedByArticle = 3;
   readonly topStoriesText = 'topstories';
   readonly tltsText = 'tlts';
@@ -49,7 +46,7 @@ export class NewsletterComponent implements OnInit {
         });
       }
       this.newsletterForm = this.formBuilder.group({
-        politics: this.formBuilder.group(tmpControls),
+        sports: this.formBuilder.group(tmpControls),
         entertainment: this.formBuilder.group(tmpControls),
         lifestyle: this.formBuilder.group(tmpControls)
       });
@@ -61,6 +58,7 @@ export class NewsletterComponent implements OnInit {
     let valid = true;
     let cpt = 0;
     let element;
+    this.initSend();
     Object.keys(result).forEach(k => {
       cpt = 0;
       Object.keys(result[k]).forEach(i => {
@@ -71,7 +69,7 @@ export class NewsletterComponent implements OnInit {
         }
       });
       if (cpt !== this.nbSendedByArticle) {
-        // valid = false; //TODO décommenté quand bonne BD
+        valid = false;
       }
       cpt = 0;
     });
