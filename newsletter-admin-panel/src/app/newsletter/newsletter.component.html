@@ -1,6 +1,6 @@
 <div class="container">
   <div class="margin-container">
-    <form *ngIf="newsletterForm" [formGroup]="newsletterForm" name="newsletter" id="newsletter" (ngSubmit)="onSubmit()">
+    <form *ngIf="newsletterForm" [formGroup]="newsletterForm" name="newsletter" id="newsletter" (ngSubmit)="onSubmit()" >
       <mat-card class="card">
         <mat-card-header>
           <mat-card-title class="title-page">Newsletter</mat-card-title>
@@ -8,7 +8,7 @@
         <mat-card-content>
           <div class="categories">
             <h2 class="category-title">SPORTS</h2>
-            <div formGroupName="sports">
+            <div formGroupName="politics">
               <mat-card *ngFor="let story of this.storiesByCategory[categories[0]]; let i = index" class="stories">
                 <mat-card-content>
                   <section class="section-article">

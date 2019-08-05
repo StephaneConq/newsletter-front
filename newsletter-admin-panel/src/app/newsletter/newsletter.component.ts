@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { NewsletterApiService} from '../services/newsletter-api.service';
+import {Component, OnInit} from '@angular/core';
+import {NewsletterApiService} from '../services/newsletter-api.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AlertService} from '../services/alert.service';
+import {timeout} from "rxjs/operators";
+
 
 @Component({
   selector: 'app-newsletter',
@@ -12,14 +15,20 @@ export class NewsletterComponent implements OnInit {
   storiesByCategory: object = {};
   //TODO Change politics into sports
   readonly categories = ['politics', 'entertainment', 'lifestyle'];
+  readonly nbSendedByArticle = 3;
+  readonly topStoriesText = 'topstories';
+  readonly tltsText = 'tlts';
+  send: object = {};
 
   constructor(
     public newsletterApiService: NewsletterApiService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private alertService: AlertService) {
   }
 
   ngOnInit() {
     const qTab = [];
+    this.initSend();
     this.categories.forEach(category => {
       qTab.push(new Promise(resolve => {
         this.newsletterApiService.getStoriesByCategory(category).subscribe(arrayStories => {
@@ -40,7 +49,7 @@ export class NewsletterComponent implements OnInit {
         });
       }
       this.newsletterForm = this.formBuilder.group({
-        sports: this.formBuilder.group(tmpControls),
+        politics: this.formBuilder.group(tmpControls),
         entertainment: this.formBuilder.group(tmpControls),
         lifestyle: this.formBuilder.group(tmpControls)
       });
@@ -48,6 +57,53 @@ export class NewsletterComponent implements OnInit {
   }
 
   onSubmit() {
-    alert('TEST');
+    const result = this.newsletterForm.value;
+    let valid = true;
+    let cpt = 0;
+    let element;
+    Object.keys(result).forEach(k => {
+      cpt = 0;
+      Object.keys(result[k]).forEach(i => {
+        // console.log(result[k][i]);
+        if (result[k][i] === true) {
+          this.send[k].push(this.storiesByCategory[k][i]);
+          cpt++;
+        }
+      });
+      if (cpt !== this.nbSendedByArticle) {
+        // valid = false; //TODO décommenté quand bonne BD
+      }
+      cpt = 0;
+    });
+    if (!valid) {
+      this.alertService.clear();
+      this.alertService.error(this.nbSendedByArticle + ' stories by categories has to be choosen');
+      this.initSend();
+      setTimeout(() => {
+        element = document.querySelector('#scrollId');
+        element.scrollIntoView();
+      });
+    } else {
+      this.newsletterApiService.sendStories(this.send).subscribe((success) => {
+        this.alertService.success('The newsletter has been sent ' + success);
+        setTimeout(() => {
+          element = document.querySelector('#scrollId');
+          element.scrollIntoView();
+        });
+      }, (error) => {
+        this.alertService.error('Error: ' + error);
+        setTimeout(() => {
+          element = document.querySelector('#scrollId');
+          element.scrollIntoView();
+        });
+      });
+    }
+  }
+  initSend() {
+    this.categories.forEach(v => {
+      this.send[v] = [];
+    });
+    this.send[this.tltsText] = [];
+    this.send[this.topStoriesText] = [];
   }
 }

@@ -13,4 +13,8 @@ export class NewsletterApiService {
   public getStoriesByCategory(category: string) {
     return this.http.get<Story[]>(`${environment.apiUrl}/api/news?category=${category}`);
   }
+
+  public sendStories(infos: object) {
+    return this.http.post(`${environment.apiUrl}/api/mailchimp/submit`, infos);
+  }
 }
