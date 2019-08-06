@@ -1,4 +1,4 @@
-
+@import "../variables";
 form > * {
   margin: 5px 0;
 }
@@ -14,6 +14,22 @@ form > * {
   }
   .form-button {
     text-align: center;
+  }
+  /*change color form invalid and valid */
+  ::ng-deep.mat-form-field-ripple {
+    background-color: $toolbar-background !important;
+  }
+  ::ng-deep.mat-form-field-label {
+    color: $toolbar-background !important;
+  }
+  ::ng-deep.mat-form-field-underline{
+    background-color: $toolbar-background !important;
+  }
+  ::ng-deep.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: #f44336!important;
+  }
+  ::ng-deep.mat-form-field.mat-form-field-invalid .mat-form-field-ripple{
+    background-color: #f44336 !important;
   }
 }
 
