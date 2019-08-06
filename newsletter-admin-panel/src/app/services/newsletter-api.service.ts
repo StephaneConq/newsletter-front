@@ -17,4 +17,8 @@ export class NewsletterApiService {
   public sendStories(infos: object) {
     return this.http.post(`${environment.apiUrl}/api/mailchimp/submit`, infos);
   }
+
+  public getNextNewsletterDate() {
+    return this.http.get(`${environment.apiUrl}/api/nextnews`);
+  }
 }

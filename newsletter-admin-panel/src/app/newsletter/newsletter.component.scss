@@ -73,5 +73,15 @@
       font-size: x-large;
       font-weight: bold;
     }
+    ::ng-deep.mat-spinner {
+      margin: auto;
+      circle {
+        stroke: $toolbar-background;
+      }
+    }
+  }
+
+  .news-info {
+    text-align: center;
   }
 }

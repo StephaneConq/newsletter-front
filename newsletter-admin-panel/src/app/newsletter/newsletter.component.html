@@ -6,6 +6,9 @@
           <mat-card-title class="title-page">Newsletter</mat-card-title>
         </mat-card-header>
         <mat-card-content>
+          <div class="news-info">
+            You need to choose stories before : <span *ngIf="!nextNewsletter">Unknown</span><span *ngIf="nextNewsletter">{{ nextNewsletter | date:'medium' }}</span>. After that, it will be send automatically.
+          </div>
           <div class="categories">
             <h2 class="category-title">SPORTS</h2>
             <div class="stories" formGroupName="sports">
@@ -95,10 +98,12 @@
           </div>
         </mat-card-content>
         <mat-card-actions>
+
           <div class="form-button">
-            <button mat-raised-button>
+            <button mat-raised-button *ngIf="!isOnSubmit">
               Submit
             </button>
+            <mat-spinner *ngIf="isOnSubmit"></mat-spinner>
           </div>
         </mat-card-actions>
       </mat-card>

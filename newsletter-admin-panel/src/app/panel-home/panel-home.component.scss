@@ -21,3 +21,8 @@
 ::ng-deep.mat-step-header .mat-step-icon-state-done {
   background-color: $toolbar-background;
 }
+
+.start-button {
+  margin: auto;
+  display: flex;
+}

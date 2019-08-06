@@ -11,11 +11,13 @@ import {AlertService} from '../services/alert.service';
 export class NewsletterComponent implements OnInit {
   newsletterForm: FormGroup;
   storiesByCategory: object = {};
+  nextNewsletter: Date;
   readonly categories = ['sports', 'entertainment', 'lifestyle'];
   readonly nbSendedByArticle = 3;
   readonly topStoriesText = 'topstories';
   readonly tltsText = 'tlts';
   send: object = {};
+  isOnSubmit = false;
 
   constructor(
     public newsletterApiService: NewsletterApiService,
@@ -26,6 +28,9 @@ export class NewsletterComponent implements OnInit {
   ngOnInit() {
     const qTab = [];
     this.initSend();
+    this.newsletterApiService.getNextNewsletterDate().subscribe(date => {
+      this.nextNewsletter = new Date(date.toString());
+    });
     this.categories.forEach(category => {
       qTab.push(new Promise(resolve => {
         this.newsletterApiService.getStoriesByCategory(category).subscribe(arrayStories => {
@@ -54,6 +59,7 @@ export class NewsletterComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isOnSubmit = true;
     const result = this.newsletterForm.value;
     let valid = true;
     let cpt = 0;
@@ -80,6 +86,7 @@ export class NewsletterComponent implements OnInit {
       setTimeout(() => {
         element = document.querySelector('#scrollId');
         element.scrollIntoView();
+        this.isOnSubmit = false;
       });
     } else {
       this.newsletterApiService.sendStories(this.send).subscribe((success) => {
@@ -87,12 +94,14 @@ export class NewsletterComponent implements OnInit {
         setTimeout(() => {
           element = document.querySelector('#scrollId');
           element.scrollIntoView();
+          this.isOnSubmit = false;
         });
       }, (error) => {
         this.alertService.error('Error: ' + error);
         setTimeout(() => {
           element = document.querySelector('#scrollId');
           element.scrollIntoView();
+          this.isOnSubmit = false;
         });
       });
     }
