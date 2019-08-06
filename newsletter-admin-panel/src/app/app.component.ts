@@ -22,7 +22,7 @@ export class AppComponent implements OnDestroy{
     media: MediaMatcher
   ) {
     this.authentificationService.currentUser.subscribe(x => this.currentUser = x);
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this.mobileQuery = media.matchMedia('(max-width: 599px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }

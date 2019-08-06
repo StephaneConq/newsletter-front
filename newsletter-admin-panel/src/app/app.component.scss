@@ -13,6 +13,11 @@
 .toolbar {
   background: $toolbar-background;
 
+  .burger-menu {
+    position: absolute;
+    left: 10px;
+  }
+
   * {
     color: white;
   }
@@ -25,6 +30,15 @@
 
 h1.app-name {
   margin-left: 8px;
+}
+
+.logo {
+  height: 80%;
+
+  @media screen and (max-width: $mobile-width) {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .sidenav-container {

@@ -1,9 +1,20 @@
 <div class="main-container" [class.is-mobile]="mobileQuery.matches">
-  <mat-toolbar class="toolbar">
-    <button mat-icon-button (click)="snav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <h1 class="app-name">THE LATEST - Newsletter</h1>
+  <mat-toolbar class="toolbar" fxLayout="row" fxLayoutAlign="center center">
+
+      <button class="burger-menu" mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+
+    <div fxFlex="100" fxFlex.xs="80" class="full-height" fxLayout="row" fxLayoutAlign="center center" fxLayoutAlign.xs="end center">
+      <div class="full-height" fxLayout="row" fxLayoutAlign="center center">
+        <img src="assets/logo.png" alt="The Latest logo" class="logo full-height">
+      </div>
+      <div>
+        <h1 class="app-name">Newsletter</h1>
+      </div>
+    </div>
+
   </mat-toolbar>
   <mat-sidenav-container class="sidenav-container"
                          [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
