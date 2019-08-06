@@ -1,44 +1,54 @@
-@import "./../variables.scss";
+@import "./../variables";
 
 .container {
-  max-width: 700px;
+  max-width: 1000px;
 
   .title-page {
     font-size: 3.5em;
   }
   .categories {
+
     .category-title {
       text-align: center;
+      border-top: 2px solid $toolbar-background;
+      margin: 30px auto;
+      padding: 0.83em 0;
+      border-bottom: 2px solid $toolbar-background;
     }
     .stories {
-      margin: 2% 0;
-      padding : 1%;
-      .section-article {
-        .article{
-          display: flex;
-          .story-text {
-            width: 100%;
-            height: 100%;
-            white-space: initial;
-            margin: auto;
-          }
+
+      .story-card {
+        background-color: white !important;
+        margin: 2% 0;
+        padding : 1%;
+
+        .section-article {
+
           .img-story{
             max-width: 200px;
             max-height: 200px;
-            margin: auto;
-          }
-          @media only screen and (max-width: $mobile-width) {
-            .img-story {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+
+            @media only screen and (max-width: $mobile-width) {
               width: auto;
               max-height: 130px;
               margin: 10px auto;
             }
           }
-        }
-        @media only screen and (max-width: $mobile-width) {
-          .article {
-            display: flex;
-            flex-direction: column
+
+          .article{
+            .story-text {
+              width: 100%;
+              height: 100%;
+              white-space: initial;
+              margin: auto;
+
+              ::ng-deep.mat-card-header-text {
+                padding: 5px;
+              }
+            }
           }
         }
       }
@@ -52,5 +62,16 @@
   }
   .form-button {
     text-align: center;
+    border-top: 2px solid $toolbar-background;
+    padding-top: 15px;
+
+    button {
+      background-color: $toolbar-background;
+      color: white;
+      width: 40%;
+      height: 60px;
+      font-size: x-large;
+      font-weight: bold;
+    }
   }
 }

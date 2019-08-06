@@ -9,19 +9,21 @@
           <div class="categories">
             <h2 class="category-title">SPORTS</h2>
             <div class="stories" formGroupName="sports">
-              <mat-card *ngFor="let story of this.storiesByCategory[categories[0]]; let i = index" class="stories">
+              <mat-card *ngFor="let story of this.storiesByCategory[categories[0]]; let i = index" class="story-card">
                 <mat-card-content>
-                  <section class="section-article">
-                    <mat-checkbox [ngModel]="i<3" [formControlName]="i">
+                  <section class="section-article" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+                    <mat-checkbox [ngModel]="i<3" [formControlName]="i" fxFlex="75">
                       <div class="article">
                         <mat-card-header class="story-text">
                           <mat-card-title>{{ story.title }} </mat-card-title>
                           <mat-card-subtitle class="mat-card-subtitle-custom">{{ story.source_name }}
                             - {{ story.publication_date }}</mat-card-subtitle>
                         </mat-card-header>
-                        <img mat-card-image src="{{ story.imgurl }}" alt="{{ story.title }}" class="img-story">
                       </div>
                     </mat-checkbox>
+                    <div fxFlex="25" fxLayout="row" fxLayoutAlign="end center">
+                      <img mat-card-image src="{{ story.imgurl }}" alt="{{ story.title }}" class="img-story">
+                    </div>
                   </section>
                 </mat-card-content>
               </mat-card>
@@ -30,19 +32,21 @@
           <div class="categories">
             <h2 class="category-title">ENTERTAINMENT</h2>
             <div class="stories" formGroupName="entertainment">
-              <mat-card *ngFor="let story of this.storiesByCategory[categories[1]]; let i = index" class="stories">
+              <mat-card *ngFor="let story of this.storiesByCategory[categories[1]]; let i = index" class="story-card">
                 <mat-card-content>
-                  <section class="section-article">
-                    <mat-checkbox [ngModel]="i<3" [formControlName]="i">
+                  <section class="section-article" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+                    <mat-checkbox [ngModel]="i<3" [formControlName]="i" fxFlex="75">
                       <div class="article">
                         <mat-card-header class="story-text">
                           <mat-card-title>{{ story.title }} </mat-card-title>
                           <mat-card-subtitle class="mat-card-subtitle-custom">{{ story.source_name }}
                             - {{ story.publication_date }}</mat-card-subtitle>
                         </mat-card-header>
-                        <img mat-card-image src="{{ story.imgurl }}" alt="{{ story.title }}" class="img-story">
                       </div>
                     </mat-checkbox>
+                    <div fxFlex="25" fxLayout="row" fxLayoutAlign="end center">
+                      <img mat-card-image src="{{ story.imgurl }}" alt="{{ story.title }}" class="img-story">
+                    </div>
                   </section>
                 </mat-card-content>
               </mat-card>
@@ -50,7 +54,7 @@
           </div>
           <div class="categories">
             <h2 class="category-title">LIFESTYLE/EXTRA</h2>
-            <div class="stories" formGroupName="lifestyle">
+            <!--<div class="stories" formGroupName="lifestyle">
               <mat-card *ngFor="let story of this.storiesByCategory[categories[2]]; let i = index" class="stories">
                 <mat-card-content>
                   <section class="section-article">
@@ -64,6 +68,26 @@
                         <img mat-card-image src="{{ story.imgurl }}" alt="{{ story.title }}" class="img-story">
                       </div>
                     </mat-checkbox>
+                  </section>
+                </mat-card-content>
+              </mat-card>
+            </div>-->
+            <div class="stories" formGroupName="lifestyle">
+              <mat-card *ngFor="let story of this.storiesByCategory[categories[2]]; let i = index" class="story-card">
+                <mat-card-content>
+                  <section class="section-article" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+                    <mat-checkbox [ngModel]="i<3" [formControlName]="i" fxFlex="75">
+                      <div class="article">
+                        <mat-card-header class="story-text">
+                          <mat-card-title>{{ story.title }} </mat-card-title>
+                          <mat-card-subtitle class="mat-card-subtitle-custom">{{ story.source_name }}
+                            - {{ story.publication_date }}</mat-card-subtitle>
+                        </mat-card-header>
+                      </div>
+                    </mat-checkbox>
+                    <div fxFlex="25" fxLayout="row" fxLayoutAlign="end center">
+                      <img mat-card-image src="{{ story.imgurl }}" alt="{{ story.title }}" class="img-story">
+                    </div>
                   </section>
                 </mat-card-content>
               </mat-card>

@@ -1,3 +1,5 @@
+@import "variables";
+
 .main-container {
   display: flex;
   flex-direction: column;
@@ -6,6 +8,14 @@
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.toolbar {
+  background: $toolbar-background;
+
+  * {
+    color: white;
+  }
 }
 
 .is-mobile .toolbar {
@@ -23,4 +33,26 @@ h1.app-name {
 
 .is-mobile .wsidenav-container {
   flex: 1 0 auto;
+}
+
+.mat-drawer {
+  width: 15%;
+  background-color: $drawer-color;
+
+  * {
+    color: white;
+    font-weight: 600;
+  }
+
+  @media screen and (max-width:$mobile-width) {
+    width: 40%;
+  }
+}
+
+::ng-deep.mat-drawer-content {
+  background-color: $container-background;
+}
+
+::ng-deep.mat-list-item-content span {
+  margin: 0 auto;
 }
