@@ -75,7 +75,7 @@ export class NewsletterComponent implements OnInit {
     });
     if (!valid) {
       this.alertService.clear();
-      this.alertService.error(this.nbSendedByArticle + ' stories by categories has to be choosen');
+      this.alertService.error(this.nbSendedByArticle + ' stories by category needs to be chosen');
       this.initSend();
       setTimeout(() => {
         element = document.querySelector('#scrollId');
@@ -83,7 +83,7 @@ export class NewsletterComponent implements OnInit {
       });
     } else {
       this.newsletterApiService.sendStories(this.send).subscribe((success) => {
-        this.alertService.success('The newsletter has been sent ' + success);
+        this.alertService.success('The newsletter has been sent ');
         setTimeout(() => {
           element = document.querySelector('#scrollId');
           element.scrollIntoView();

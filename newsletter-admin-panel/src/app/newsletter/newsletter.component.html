@@ -1,6 +1,6 @@
 <div class="container">
   <div class="margin-container">
-    <form *ngIf="newsletterForm" [formGroup]="newsletterForm" name="newsletter" id="newsletter" (ngSubmit)="onSubmit()" >
+    <form *ngIf="newsletterForm" [formGroup]="newsletterForm" name="newsletter" id="newsletter" (ngSubmit)="onSubmit()">
       <mat-card class="card">
         <mat-card-header>
           <mat-card-title class="title-page">Newsletter</mat-card-title>
@@ -16,7 +16,8 @@
                       <div class="article">
                         <mat-card-header class="story-text">
                           <mat-card-title>{{ story.title }} </mat-card-title>
-                          <mat-card-subtitle class="mat-card-subtitle-custom">{{ story.name }} - {{ story.publication_date }}</mat-card-subtitle>
+                          <mat-card-subtitle class="mat-card-subtitle-custom">{{ story.source_name }}
+                            - {{ story.publication_date }}</mat-card-subtitle>
                         </mat-card-header>
                         <img mat-card-image src="{{ story.imgurl }}" alt="{{ story.title }}" class="img-story">
                       </div>
@@ -36,7 +37,8 @@
                       <div class="article">
                         <mat-card-header class="story-text">
                           <mat-card-title>{{ story.title }} </mat-card-title>
-                          <mat-card-subtitle class="mat-card-subtitle-custom">{{ story.name }} - {{ story.publication_date }}</mat-card-subtitle>
+                          <mat-card-subtitle class="mat-card-subtitle-custom">{{ story.source_name }}
+                            - {{ story.publication_date }}</mat-card-subtitle>
                         </mat-card-header>
                         <img mat-card-image src="{{ story.imgurl }}" alt="{{ story.title }}" class="img-story">
                       </div>
@@ -56,7 +58,8 @@
                       <div class="article">
                         <mat-card-header class="story-text">
                           <mat-card-title>{{ story.title }} </mat-card-title>
-                          <mat-card-subtitle class="mat-card-subtitle-custom">{{ story.name }} - {{ story.publication_date }}</mat-card-subtitle>
+                          <mat-card-subtitle class="mat-card-subtitle-custom">{{ story.source_name }}
+                            - {{ story.publication_date }}</mat-card-subtitle>
                         </mat-card-header>
                         <img mat-card-image src="{{ story.imgurl }}" alt="{{ story.title }}" class="img-story">
                       </div>
