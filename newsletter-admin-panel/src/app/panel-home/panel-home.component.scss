@@ -4,6 +4,18 @@
   background-color: $card-background;
 }
 
+.container {
+  max-width: 850px;
+}
+
+::ng-deep.mat-horizontal-content-container {
+
+  h2 {
+    color: $toolbar-background;
+    font-weight: normal;
+  }
+}
+
 ::ng-deep.mat-step-header .mat-step-icon-selected,
 ::ng-deep.mat-step-header .mat-step-icon-state-edit,
 ::ng-deep.mat-step-header .mat-step-icon-state-done {

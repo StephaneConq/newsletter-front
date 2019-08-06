@@ -14,27 +14,31 @@
         <div>
 
           <mat-horizontal-stepper>
-            <mat-step label="Select news" state="phone">
-              <div>
+            <mat-step state="one">
+              <ng-template matStepLabel>Select news</ng-template>
+              <h2 class="center-align">
                 Choose 3 news per category by selecting them
-              </div>
+              </h2>
             </mat-step>
-            <mat-step label="Submit" state="chat">
-              <div>
+            <mat-step label="Submit" state="two">
+              <h2 class="center-align">
                 Click submit when you are ready to send the newsletter
-              </div>
+              </h2>
             </mat-step>
-            <mat-step label="Done">
-              <div>
+            <mat-step label="Done" state="three">
+              <h2 class="center-align">
                 And that's it!
-              </div>
+              </h2>
             </mat-step>
 
-            <ng-template matStepperIcon="phone">
-              <mat-icon>call_end</mat-icon>
+            <ng-template matStepperIcon="one">
+              <mat-icon>edit</mat-icon>
             </ng-template>
-            <ng-template matStepperIcon="chat">
-              <mat-icon>forum</mat-icon>
+            <ng-template matStepperIcon="two">
+              <mat-icon>send</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="three">
+              <mat-icon>done</mat-icon>
             </ng-template>
           </mat-horizontal-stepper>
 
