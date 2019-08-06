@@ -11,10 +11,10 @@ import {AlertService} from '../services/alert.service';
 export class NewsletterComponent implements OnInit {
   newsletterForm: FormGroup;
   storiesByCategory: object = {};
+  tlts: object = [];
   nextNewsletter: Date;
-  readonly categories = ['sports', 'entertainment', 'lifestyle'];
+  readonly categories = ['topstories', 'sports', 'entertainment', 'lifestyle'];
   readonly nbSendedByArticle = 3;
-  readonly topStoriesText = 'topstories';
   readonly tltsText = 'tlts';
   send: object = {};
   isOnSubmit = false;
@@ -31,6 +31,9 @@ export class NewsletterComponent implements OnInit {
     this.newsletterApiService.getNextNewsletterDate().subscribe(date => {
       this.nextNewsletter = new Date(date.toString());
     });
+    this.newsletterApiService.getTlts().subscribe(opinions => {
+      this.tlts = opinions;
+    })
     this.categories.forEach(category => {
       qTab.push(new Promise(resolve => {
         this.newsletterApiService.getStoriesByCategory(category).subscribe(arrayStories => {
@@ -43,17 +46,15 @@ export class NewsletterComponent implements OnInit {
       const tmpControls = {};
       for (const cat of this.categories) {
         this.storiesByCategory[cat].forEach((value, index) => {
-          if (index < 3) {
             tmpControls[index] = [''];
-          } else {
-            tmpControls[index] = [''];
-          }
         });
       }
       this.newsletterForm = this.formBuilder.group({
         sports: this.formBuilder.group(tmpControls),
         entertainment: this.formBuilder.group(tmpControls),
-        lifestyle: this.formBuilder.group(tmpControls)
+        lifestyle: this.formBuilder.group(tmpControls),
+        topstories: this.formBuilder.group(tmpControls),
+        tlts: this.formBuilder.group(tmpControls),
       });
     });
   }
@@ -70,7 +71,11 @@ export class NewsletterComponent implements OnInit {
       Object.keys(result[k]).forEach(i => {
         // console.log(result[k][i]);
         if (result[k][i] === true) {
-          this.send[k].push(this.storiesByCategory[k][i]);
+          if (k === this.tltsText) {
+            this.send[k].push(this.tlts[i]);
+          } else {
+            this.send[k].push(this.storiesByCategory[k][i]);
+          }
           cpt++;
         }
       });
@@ -111,6 +116,5 @@ export class NewsletterComponent implements OnInit {
       this.send[v] = [];
     });
     this.send[this.tltsText] = [];
-    this.send[this.topStoriesText] = [];
   }
 }
