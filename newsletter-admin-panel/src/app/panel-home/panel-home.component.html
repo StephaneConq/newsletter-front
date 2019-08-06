@@ -8,10 +8,38 @@
   <div class="margin-container">
     <mat-card class="card">
       <mat-card-header>
-        <mat-card-title>Hi {{currentUser.firstName}}!</mat-card-title>
+        <mat-card-title>Hi {{currentUser.username}}!</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <div>BLABLA</div>
+        <div>
+
+          <mat-horizontal-stepper>
+            <mat-step label="Select news" state="phone">
+              <div>
+                Choose 3 news per category by selecting them
+              </div>
+            </mat-step>
+            <mat-step label="Submit" state="chat">
+              <div>
+                Click submit when you are ready to send the newsletter
+              </div>
+            </mat-step>
+            <mat-step label="Done">
+              <div>
+                And that's it!
+              </div>
+            </mat-step>
+
+            <ng-template matStepperIcon="phone">
+              <mat-icon>call_end</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="chat">
+              <mat-icon>forum</mat-icon>
+            </ng-template>
+          </mat-horizontal-stepper>
+
+
+        </div>
       </mat-card-content>
     </mat-card>
   </div>

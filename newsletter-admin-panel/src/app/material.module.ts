@@ -10,7 +10,7 @@ import {
   MatCardModule,
   MatListModule,
   MatTabsModule,
-  MatSidenavModule,
+  MatSidenavModule, MatStepperModule,
 } from '@angular/material';
 
 const arrayModules = [
@@ -23,6 +23,7 @@ const arrayModules = [
   MatListModule,
   MatTabsModule,
   MatSidenavModule,
+  MatStepperModule,
 ];
 
 @NgModule({
