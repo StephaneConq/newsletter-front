@@ -1,0 +1,35 @@
+@import "../variables";
+form > * {
+  margin: 5px 0;
+}
+
+.card {
+  .container-login {
+    display: flex;
+    flex-direction: column;
+
+    .mat-radio-button {
+      margin: 0 12px;
+    }
+  }
+  .form-button {
+    text-align: center;
+  }
+  /*change color form invalid and valid */
+  ::ng-deep.mat-form-field-ripple {
+    background-color: $toolbar-background !important;
+  }
+  ::ng-deep.mat-form-field-label {
+    color: $toolbar-background !important;
+  }
+  ::ng-deep.mat-form-field-underline{
+    background-color: $toolbar-background !important;
+  }
+  ::ng-deep.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: #f44336!important;
+  }
+  ::ng-deep.mat-form-field.mat-form-field-invalid .mat-form-field-ripple{
+    background-color: #f44336 !important;
+  }
+}
+

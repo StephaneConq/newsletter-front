@@ -1,0 +1,71 @@
+.container {
+  max-width: 1000px;
+}
+.container .title-page {
+  font-size: 3.5em;
+}
+.container .categories .category-title {
+  text-align: center;
+  border-top: 2px solid #2f3e50;
+  margin: 30px auto;
+  padding: 0.83em 0;
+  border-bottom: 2px solid #2f3e50;
+}
+.container .categories .stories .story-card {
+  background-color: white !important;
+  margin: 2% 0;
+  padding: 1%;
+}
+.container .categories .stories .story-card .section-article .img-story {
+  max-width: 200px;
+  max-height: 200px;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (max-width: 599px) {
+  .container .categories .stories .story-card .section-article .img-story {
+    width: auto;
+    max-height: 130px;
+    margin: 10px auto;
+  }
+}
+.container .categories .stories .story-card .section-article .article .story-text {
+  width: 100%;
+  height: 100%;
+  white-space: initial;
+  margin: auto;
+}
+.container .categories .stories .story-card .section-article .article .story-text ::ng-deep.mat-card-header-text {
+  padding: 5px;
+}
+.container .categories .mat-card-subtitle-custom {
+  margin: 0;
+}
+.container ::ng-deep.mat-card-header-text {
+  margin: auto;
+}
+.container .form-button {
+  text-align: center;
+  border-top: 2px solid #2f3e50;
+  padding-top: 15px;
+}
+.container .form-button button {
+  background-color: #2f3e50;
+  color: white;
+  width: 40%;
+  height: 60px;
+  font-size: x-large;
+  font-weight: bold;
+}
+.container .form-button ::ng-deep.mat-spinner {
+  margin: auto;
+}
+.container .form-button ::ng-deep.mat-spinner circle {
+  stroke: #2f3e50;
+}
+.container .news-info {
+  text-align: center;
+}
+
+/*# sourceMappingURL=newsletter.component.css.map */

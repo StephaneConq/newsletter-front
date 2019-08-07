@@ -1,0 +1,53 @@
+<!--<ul>
+  <li *ngFor="let user of users">
+    {{user.username}} ({{user.firstName}} {{user.lastName}})
+    - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+  </li>
+</ul>-->
+<div class="container">
+  <div class="margin-container">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>Hi {{currentUser.username}}!</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div>
+
+          <mat-horizontal-stepper>
+            <mat-step state="one">
+              <ng-template matStepLabel>Select news</ng-template>
+              <h2 class="center-align">
+                Choose 3 news per category by selecting them
+              </h2>
+
+            </mat-step>
+            <mat-step label="Submit" state="two">
+              <h2 class="center-align">
+                Click submit when you are ready to send the newsletter
+              </h2>
+            </mat-step>
+            <mat-step label="Done" state="three">
+              <h2 class="center-align">
+                And that's it!
+              </h2>
+            </mat-step>
+
+            <ng-template matStepperIcon="one">
+              <mat-icon>edit</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="two">
+              <mat-icon>send</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="three">
+              <mat-icon>done</mat-icon>
+            </ng-template>
+          </mat-horizontal-stepper>
+          <button mat-raised-button routerLink="/newsletter" class="start-button">
+            Click here to start
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

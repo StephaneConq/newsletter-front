@@ -1,0 +1,14 @@
+.yes-button {
+  background-color: #4CAF50;
+}
+
+.no-button {
+  background-color: #f44336;
+}
+
+.yes-button, .no-button {
+  color: white;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=confirm-newsletter.component.css.map */

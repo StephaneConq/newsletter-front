@@ -1,7 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import "app/variables";
-
 body {
   font-family: Roboto, Arial, sans-serif;
   margin: 0;
@@ -15,17 +13,19 @@ body {
   margin: auto;
   max-width: 550px;
 }
+
 .margin-container {
   margin: 5%;
 }
 
 mat-card {
-  background-color: $card-background !important;
+  background-color: #F8F8F9 !important;
 }
 
 .full-height {
   height: 100%;
 }
+
 .full-width {
   width: 100%;
 }
@@ -33,3 +33,5 @@ mat-card {
 .center-align {
   text-align: center;
 }
+
+/*# sourceMappingURL=styles.css.map */
