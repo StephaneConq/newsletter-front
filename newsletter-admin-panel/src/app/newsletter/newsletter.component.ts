@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {NewsletterApiService} from '../services/newsletter-api.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AlertService} from '../services/alert.service';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {ConfirmNewsletterComponent} from "../dialogs/confirm-newsletter/confirm-newsletter.component";
 
 @Component({
   selector: 'app-newsletter',
@@ -20,7 +22,8 @@ export class NewsletterComponent implements OnInit {
   constructor(
     public newsletterApiService: NewsletterApiService,
     private formBuilder: FormBuilder,
-    private alertService: AlertService) {
+    private alertService: AlertService,
+    private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -53,7 +56,20 @@ export class NewsletterComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmitModal() {
+    const dialogRef = this.dialog.open(ConfirmNewsletterComponent, {
+      width: '500px',
+      height: '300px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.submitNewsLetter();
+      }
+    });
+  }
+
+  submitNewsLetter() {
     const result = this.newsletterForm.value;
     let valid = true;
     let cpt = 0;
@@ -97,6 +113,7 @@ export class NewsletterComponent implements OnInit {
       });
     }
   }
+
   initSend() {
     this.categories.forEach(v => {
       this.send[v] = [];

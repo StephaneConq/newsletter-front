@@ -20,6 +20,7 @@ import { NewsletterComponent } from './newsletter/newsletter.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatMenuModule, MatToolbarModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ConfirmNewsletterComponent } from './dialogs/confirm-newsletter/confirm-newsletter.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AlertComponent,
     PanelHomeComponent,
     LoginComponent,
-    NewsletterComponent
+    NewsletterComponent,
+    ConfirmNewsletterComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatToolbarModule,
     FlexLayoutModule,
     FormsModule
+  ],
+  entryComponents: [
+    ConfirmNewsletterComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -1,0 +1,16 @@
+<div fxLayout="column" fxLayoutAlign="center center" class="full-height">
+  <div fxFlex="10" fxLayout="row" fxLayoutAlign="space-around center" class="full-width">
+    <mat-icon>warning</mat-icon>
+    <h2>Warning</h2>
+    <mat-icon>warning</mat-icon>
+  </div>
+
+  <div fxFlex="80" fxLayout="row" fxLayoutAlign="center center" class="center-align">
+    <h3>This action will send the newsletter. Are you sure you want to submit?</h3>
+  </div>
+
+  <div fxFlex="10" fxLayout="row" fxLayoutAlign="space-around center" class="full-width">
+    <button mat-raised-button (click)="onNoClick()" class="no-button">No</button>
+    <button mat-raised-button (click)="onYesClick()" class="yes-button">Yes</button>
+  </div>
+</div>

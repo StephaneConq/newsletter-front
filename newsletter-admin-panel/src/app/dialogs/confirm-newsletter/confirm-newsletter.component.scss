@@ -1,0 +1,14 @@
+@import "../../variables";
+
+.yes-button {
+  background-color: $green-alert;
+}
+
+.no-button {
+  background-color: $red-alert;
+}
+
+.yes-button, .no-button {
+  color: white;
+  font-weight: bold;
+}

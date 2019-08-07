@@ -10,7 +10,7 @@ import {
   MatCardModule,
   MatListModule,
   MatTabsModule,
-  MatSidenavModule, MatStepperModule,
+  MatSidenavModule, MatStepperModule, MatDialogModule,
 } from '@angular/material';
 
 const arrayModules = [
@@ -24,6 +24,7 @@ const arrayModules = [
   MatTabsModule,
   MatSidenavModule,
   MatStepperModule,
+  MatDialogModule
 ];
 
 @NgModule({
