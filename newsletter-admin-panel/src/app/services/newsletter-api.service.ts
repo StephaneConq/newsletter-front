@@ -23,6 +23,6 @@ export class NewsletterApiService {
   }
 
   public getNextNewsletterDate() {
-    return this.http.get(`${environment.apiUrl}/api/nextnews`);
+    return this.http.get(`${environment.apiUrl}/api/mailchimp/newsletter/date`);
   }
 }

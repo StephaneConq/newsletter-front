@@ -29,7 +29,7 @@ export class NewsletterComponent implements OnInit {
     const qTab = [];
     this.initSend();
     this.newsletterApiService.getNextNewsletterDate().subscribe(date => {
-      this.nextNewsletter = new Date(date.toString());
+      this.nextNewsletter = new Date(date.date);
     });
     this.newsletterApiService.getTlts().subscribe(opinions => {
       this.tlts = opinions;
