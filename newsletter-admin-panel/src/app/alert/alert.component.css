@@ -1,0 +1,16 @@
+.alert-danger {
+  background-color: #f44336;
+}
+
+.alert-success {
+  background-color: #4CAF50;
+}
+
+.alert {
+  padding: 20px;
+  color: white;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/*# sourceMappingURL=alert.component.css.map */

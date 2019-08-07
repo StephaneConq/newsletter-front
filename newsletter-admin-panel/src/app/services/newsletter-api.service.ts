@@ -14,7 +14,15 @@ export class NewsletterApiService {
     return this.http.get<Story[]>(`${environment.apiUrl}/api/news?category=${category}`);
   }
 
+  public getTlts() {
+    return this.http.get(`${environment.apiUrl}/api/tlts`);
+  }
+
   public sendStories(infos: object) {
     return this.http.post(`${environment.apiUrl}/api/mailchimp/submit`, infos);
+  }
+
+  public getNextNewsletterDate() {
+    return this.http.get(`${environment.apiUrl}/api/mailchimp/newsletter/date`);
   }
 }

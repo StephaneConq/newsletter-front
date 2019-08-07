@@ -1,0 +1,34 @@
+form > * {
+  margin: 5px 0;
+}
+
+.card {
+  /*change color form invalid and valid */
+}
+.card .container-login {
+  display: flex;
+  flex-direction: column;
+}
+.card .container-login .mat-radio-button {
+  margin: 0 12px;
+}
+.card .form-button {
+  text-align: center;
+}
+.card ::ng-deep.mat-form-field-ripple {
+  background-color: #2f3e50 !important;
+}
+.card ::ng-deep.mat-form-field-label {
+  color: #2f3e50 !important;
+}
+.card ::ng-deep.mat-form-field-underline {
+  background-color: #2f3e50 !important;
+}
+.card ::ng-deep.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: #f44336 !important;
+}
+.card ::ng-deep.mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
+  background-color: #f44336 !important;
+}
+
+/*# sourceMappingURL=login.component.css.map */

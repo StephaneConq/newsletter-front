@@ -1,0 +1,71 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.toolbar {
+  background: #2f3e50;
+}
+.toolbar .burger-menu {
+  position: absolute;
+  left: 10px;
+}
+.toolbar * {
+  color: white;
+}
+
+.is-mobile .toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+h1.app-name {
+  margin-left: 8px;
+}
+
+.logo {
+  height: 80%;
+}
+@media screen and (max-width: 599px) {
+  .logo {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.sidenav-container {
+  flex: 1;
+}
+
+.is-mobile .wsidenav-container {
+  flex: 1 0 auto;
+}
+
+.mat-drawer {
+  width: 15%;
+  background-color: #4E5B6A;
+}
+.mat-drawer * {
+  color: white;
+  font-weight: 600;
+}
+@media screen and (max-width: 599px) {
+  .mat-drawer {
+    width: 40%;
+  }
+}
+
+::ng-deep.mat-drawer-content {
+  background-color: #E6E8EA;
+}
+
+::ng-deep.mat-list-item-content span {
+  margin: 0 auto;
+}
+
+/*# sourceMappingURL=app.component.css.map */

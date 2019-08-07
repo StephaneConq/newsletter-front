@@ -18,7 +18,7 @@ import { PanelHomeComponent } from './panel-home/panel-home.component';
 import { LoginComponent } from './login/login.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatMenuModule, MatToolbarModule} from '@angular/material';
+import {MatMenuModule, MatProgressSpinnerModule, MatToolbarModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ConfirmNewsletterComponent } from './dialogs/confirm-newsletter/confirm-newsletter.component';
 
@@ -43,7 +43,8 @@ import { ConfirmNewsletterComponent } from './dialogs/confirm-newsletter/confirm
     MatMenuModule,
     MatToolbarModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [
     ConfirmNewsletterComponent
