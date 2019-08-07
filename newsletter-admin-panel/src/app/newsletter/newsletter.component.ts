@@ -12,7 +12,7 @@ export class NewsletterComponent implements OnInit {
   newsletterForm: FormGroup;
   storiesByCategory: object = {};
   tlts: object = [];
-  nextNewsletter: Date;
+  nextNewsletter: string;
   readonly categories = ['topstories', 'sports', 'entertainment', 'lifestyle'];
   readonly nbSendedByArticle = 3;
   readonly tltsText = 'tlts';
@@ -29,7 +29,7 @@ export class NewsletterComponent implements OnInit {
     const qTab = [];
     this.initSend();
     this.newsletterApiService.getNextNewsletterDate().subscribe(date => {
-      this.nextNewsletter = new Date(date.date);
+      this.nextNewsletter = date['date'];
     });
     this.newsletterApiService.getTlts().subscribe(opinions => {
       this.tlts = opinions;
@@ -79,14 +79,17 @@ export class NewsletterComponent implements OnInit {
           cpt++;
         }
       });
-      if (cpt !== this.nbSendedByArticle) {
+      if ((cpt !== this.nbSendedByArticle && k !== this.tltsText) || (cpt !== (this.nbSendedByArticle - 1) && k === this.tltsText)) {
         valid = false;
       }
       cpt = 0;
     });
     if (!valid) {
       this.alertService.clear();
-      this.alertService.error(this.nbSendedByArticle + ' stories by category needs to be chosen');
+      this.alertService.error(this.nbSendedByArticle
+        + ' stories by category needs to be chosen and '
+        + (this.nbSendedByArticle - 1)
+        + ' opinions');
       this.initSend();
       setTimeout(() => {
         element = document.querySelector('#scrollId');

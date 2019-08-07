@@ -7,7 +7,7 @@
         </mat-card-header>
         <mat-card-content>
           <div class="news-info">
-            You need to choose stories before : <span *ngIf="!nextNewsletter">Unknown</span><span *ngIf="nextNewsletter">{{ nextNewsletter | date:'medium' }}</span>. After that, it will be send automatically.
+            You need to choose stories before : <span *ngIf="!nextNewsletter">Unknown</span><span *ngIf="nextNewsletter">{{ nextNewsletter }}</span>. After that, it will be send automatically.
           </div>
           <div class="categories">
             <h2 class="category-title">TOP STORIES</h2>
@@ -104,10 +104,10 @@
           <div class="categories">
             <h2 class="category-title">The Latest Thinking</h2>
             <div class="stories" formGroupName="tlts">
-              <mat-card *ngFor="let tlt of this.tlts; let i = index" class="story-card">
+              <mat-card *ngFor="let tlt of tlts; let i = index" class="story-card">
                 <mat-card-content>
                   <section class="section-article" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
-                    <mat-checkbox [ngModel]="i<3" [formControlName]="i" fxFlex="75">
+                    <mat-checkbox [ngModel]="i<2" [formControlName]="i" fxFlex="75">
                       <div class="article">
                         <mat-card-header class="story-text">
                           <mat-card-title>{{ tlt.title }} - {{ tlt.fullname }}</mat-card-title>
