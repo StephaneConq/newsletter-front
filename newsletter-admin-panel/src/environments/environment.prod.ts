@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://newsletters.thelatest.com'
+  apiUrl: 'https://api-newsletter.thelatest.com'
 };
